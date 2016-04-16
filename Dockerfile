@@ -6,14 +6,13 @@ RUN apk --update upgrade && \
         rm -rf /var/cache/apk/*
 
 ADD http://ds.iris.edu/pub/programs/rdseedv5.3.1.tar.gz /tmp/rdseedv5.3.1.tar
+ADD rdseedv5.3.1.patch0 /tmp/rdseedv5.3.1.patch0 
 
 RUN tar -xv -C /tmp -f /tmp/rdseedv5.3.1.tar && \
         cd /tmp/rdseedv5.3.1 && \
+        patch -p1 < /tmp/rdseedv5.3.1.patch0 && \
         make clean && \
-        find . -depth -name makefile -exec sed -i -e 's#cc#gcc -I/usr/include/tirpc#' {} \; && \
-        find . -depth -name Makefile -exec sed -i -e 's#-lnsl#-ltirpc#g' {} \; && \
-        find . -depth -name makefile -exec sed -i -e 's#ggcc -I/usr/include/tirpc##' {} \; && \
-        make && \
+        make  && \
         cp rdseed /usr/bin
 
 ENTRYPOINT ["/usr/bin/rdseed"]

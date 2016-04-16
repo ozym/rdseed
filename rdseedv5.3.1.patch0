@@ -1,0 +1,72 @@
+diff -Naur rdseedv5.3.1/Ah/makefile new/Ah/makefile
+--- rdseedv5.3.1/Ah/makefile	2011-12-09 08:04:25.000000000 +1300
++++ new/Ah/makefile	2016-04-16 12:30:48.385521293 +1200
+@@ -1,2 +1,2 @@
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all : ioroutin.o
+diff -Naur rdseedv5.3.1/Decoders/makefile new/Decoders/makefile
+--- rdseedv5.3.1/Decoders/makefile	2011-12-09 08:04:25.000000000 +1300
++++ new/Decoders/makefile	2016-04-16 12:30:48.384521294 +1200
+@@ -1,4 +1,4 @@
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all : convert_seedhdr.o \
+ decode_echery.o \
+ decode_graef.o \
+diff -Naur rdseedv5.3.1/Main/makefile new/Main/makefile
+--- rdseedv5.3.1/Main/makefile	2012-05-18 05:29:04.000000000 +1200
++++ new/Main/makefile	2016-04-16 12:30:48.382521299 +1200
+@@ -1,5 +1,5 @@
+ # CFLAGS = -I../Include -I/usr/include -c
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all :	time_span_out.o \
+ 	output_simple.o \
+ 	output_data.o \
+diff -Naur rdseedv5.3.1/Makefile new/Makefile
+--- rdseedv5.3.1/Makefile	2015-11-05 10:29:31.000000000 +1300
++++ new/Makefile	2016-04-16 12:30:56.030510838 +1200
+@@ -45,7 +45,7 @@
+ #LDFLAGS = -lm -lc
+ 
+ # Uncomment this line for Solaris
+-LDFLAGS = -lm -lc -lnsl
++LDFLAGS = -lm -lc -ltirpc
+ 
+ MAKE = make CFLAGS=${CFLAGSLINE} all
+ 
+diff -Naur rdseedv5.3.1/Parsers/makefile new/Parsers/makefile
+--- rdseedv5.3.1/Parsers/makefile	2011-12-09 08:04:26.000000000 +1300
++++ new/Parsers/makefile	2016-04-16 12:30:48.380521307 +1200
+@@ -1,4 +1,4 @@
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all : get_response.o \
+ parse_key.o \
+ parse_10.o \
+diff -Naur rdseedv5.3.1/Printers/makefile new/Printers/makefile
+--- rdseedv5.3.1/Printers/makefile	2011-12-09 08:04:27.000000000 +1300
++++ new/Printers/makefile	2016-04-16 12:30:48.385521293 +1200
+@@ -1,4 +1,4 @@
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all : pagetop.o \
+ print_abrvd.o \
+ print_channel.o \
+diff -Naur rdseedv5.3.1/Snoop/makefile new/Snoop/makefile
+--- rdseedv5.3.1/Snoop/makefile	2011-12-09 08:04:27.000000000 +1300
++++ new/Snoop/makefile	2016-04-16 12:30:48.381521303 +1200
+@@ -1,2 +1,2 @@
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all :	times_data.o
+diff -Naur rdseedv5.3.1/Utilities/makefile new/Utilities/makefile
+--- rdseedv5.3.1/Utilities/makefile	2011-12-09 08:04:27.000000000 +1300
++++ new/Utilities/makefile	2016-04-16 12:30:48.383521296 +1200
+@@ -1,4 +1,4 @@
+-CC=cc
++CC=gcc -I/usr/include/tirpc
+ all : alloc_linklist_element.o \
+ allocation_error.o \
+ cmdlineproc.o \
