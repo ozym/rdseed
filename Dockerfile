@@ -12,6 +12,7 @@ RUN tar -xv -C /tmp -f /tmp/rdseedv5.3.1.tar && \
         make clean && \
         find . -depth -name makefile -exec sed -i -e 's#cc#gcc -I/usr/include/tirpc#' {} \; && \
         find . -depth -name Makefile -exec sed -i -e 's#-lnsl#-ltirpc#g' {} \; && \
+        find . -depth -name makefile -exec sed -i -e 's#ggcc -I/usr/include/tirpc##' {} \; && \
         make && \
         cp rdseed /usr/bin
 
